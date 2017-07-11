@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Bot.Builder.FormFlow;
-using static Microsoft.Bot.Builder.Luis.BuiltIn.DateTime;
 
 public enum CarOptions { Convertible = 1, SUV, EV };
 public enum ColorOptions { Red = 1, White, Blue };
@@ -14,9 +13,6 @@ public class BasicForm
 
     [Prompt("Please select your favorite car type {||}")]
     public CarOptions Car { get; set; }
-
-    [Prompt("Quand a été ton souvenir ? {||}")]
-    public Datetime Date { get; set; }
 
     [Prompt("Please select your favorite {&} {||}")]
     public ColorOptions Color { get; set; }
