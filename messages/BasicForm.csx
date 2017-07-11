@@ -14,6 +14,9 @@ public class BasicForm
     [Prompt("Sélectionner une date s'il vous plaît {||}")]
     public CarOptions Date { get; set; }
 
+    [Prompt("Quel est votre souvenir ?")]
+    public string Chose { get; set; }
+
     [Prompt("Please select your favorite {&} {||}")]
     public ColorOptions Color { get; set; }
 
