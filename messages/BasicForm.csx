@@ -1,6 +1,6 @@
 using System;
 using Microsoft.Bot.Builder.FormFlow;
-using Microsoft.Bot.Builder.Datetime;
+using static Microsoft.Bot.Builder.Luis.BuiltIn.DateTime;
 
 public enum CarOptions { Convertible = 1, SUV, EV };
 public enum ColorOptions { Red = 1, White, Blue };
