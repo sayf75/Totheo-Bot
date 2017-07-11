@@ -2,7 +2,7 @@ using System;
 using Microsoft.Bot.Builder.FormFlow;
 
 public enum CarOptions { Convertible = 1, SUV, EV };
-public enum ColorOptions { Red = 1, White, Blue };
+public enum ColorOptions { Fred = 1, Jack, Queen, personne };
 
 // For more information about this template visit http://aka.ms/azurebots-csharp-form
 [Serializable]
@@ -11,13 +11,13 @@ public class BasicForm
     [Prompt("Où s'est passé ton {&}?")]
     public string Souvenir { get; set; }
 
-    [Prompt("Sélectionner une date s'il vous plaît {||}")]
+    [Prompt("Sélectionner une date {||}")]
     public CarOptions Date { get; set; }
 
     [Prompt("Quel est votre souvenir ?")]
     public string Chose { get; set; }
 
-    [Prompt("Please select your favorite {&} {||}")]
+    [Prompt("Choisissez les personnes avec qui vous étiez {&} {||}")]
     public ColorOptions Color { get; set; }
 
     public static IForm<BasicForm> BuildForm()
