@@ -3,16 +3,16 @@ using Microsoft.Bot.Builder.FormFlow;
 
 public enum CarOptions { Convertible = 1, SUV, EV };
 public enum ColorOptions { Fred = 1, Jack, Queen, personne };
-
+public DateTime date = DateTime.Now;
 // For more information about this template visit http://aka.ms/azurebots-csharp-form
 [Serializable]
 public class BasicForm
 {
-    [Prompt("Où s'est passé ton {&}?")]
+    [Prompt("Où s'est passé votre {&}?")]
     public string Souvenir { get; set; }
 
-    [Prompt("Sélectionner une date {||}")]
-    public CarOptions Date { get; set; }
+    [Prompt("Sélectionner une date {now}")]
+    public static DateTime now { get; }
 
     [Prompt("Quel est votre souvenir ?")]
     public string Chose { get; set; }
