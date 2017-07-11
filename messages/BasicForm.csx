@@ -8,11 +8,11 @@ public enum ColorOptions { Red = 1, White, Blue };
 [Serializable]
 public class BasicForm
 {
-    [Prompt("Où sera ton {&}?")]
+    [Prompt("Où s'est passé ton {&}?")]
     public string Souvenir { get; set; }
 
-    [Prompt("Please select your favorite car type {||}")]
-    public CarOptions Car { get; set; }
+    [Prompt("Sélectionner une date s'il vous plaît {||}")]
+    public CarOptions Date { get; set; }
 
     [Prompt("Please select your favorite {&} {||}")]
     public ColorOptions Color { get; set; }

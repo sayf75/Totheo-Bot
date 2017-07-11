@@ -33,16 +33,16 @@ public class MainDialog : IDialog<BasicForm>
             var form = await result;
             if (form != null)
             {
-                await context.PostAsync("Thanks for completing the form! Just type anything to restart it.");
+                await context.PostAsync("Merci d'avoir rempli le formulaire! Retapez pour relancer le bot.");
             }
             else
             {
-                await context.PostAsync("Form returned empty response! Type anything to restart it.");
+                await context.PostAsync("Formulaire vide! Tapez quelque chose pour relancer le bot.");
             }
         }
         catch (OperationCanceledException)
         {
-            await context.PostAsync("You canceled the form! Type anything to restart it.");
+            await context.PostAsync("Vous avez annulé le formulaire! Tapez quelque chose pour relancer le bot.");
         }
 
         context.Wait(MessageReceivedAsync);

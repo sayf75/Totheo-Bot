@@ -46,7 +46,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                         foreach (var newMember in newMembers)
                         {
                             reply.Text = "Bienvenue";
-                            newMember.Name = "Utilisateur";
+                            newMember.Name = "utilisateur";
                             if (!string.IsNullOrEmpty(newMember.Name))
                             {
                                 reply.Text += $" {newMember.Name}";
