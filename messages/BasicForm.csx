@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Bot.Builder.FormFlow;
+using Microsoft.Bot.Builder.Datetime;
 
 public enum CarOptions { Convertible = 1, SUV, EV };
 public enum ColorOptions { Red = 1, White, Blue };
@@ -8,11 +9,14 @@ public enum ColorOptions { Red = 1, White, Blue };
 [Serializable]
 public class BasicForm
 {
-    [Prompt("Salut! Où sera ton {&}?")]
+    [Prompt("Où sera ton {&}?")]
     public string Souvenir { get; set; }
 
     [Prompt("Please select your favorite car type {||}")]
     public CarOptions Car { get; set; }
+
+    [Prompt("Quand a été ton souvenir ? {||}")]
+    public Datetime Date { get; set; }
 
     [Prompt("Please select your favorite {&} {||}")]
     public ColorOptions Color { get; set; }
