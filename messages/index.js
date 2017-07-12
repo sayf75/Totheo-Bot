@@ -22,25 +22,27 @@ bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', [
     function (session) {
-        builder.Prompts.text(session, "Bonjour où se trouve votre souvenir ?");
+        builder.Prompts.text(session, "Bonjour quel est le lieu de votre souvenir ?");
     },
     function (session, results) {
-      console.log(session.userData.name);
-      session.userData.name = results.response;
-      builder.Prompts.time(session, "Hi" + results.reponse + "Entrez la date de votre souvenir ?" );
+      session.userData.lieu = results.response;
+      builder.Prompts.time(session, "Hi " + results.reponse + "Entrez la date de votre souvenir ?" );
+
     },
     function (session, results) {
         session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
         builder.Prompts.text(session, " " + results.response + ", Quel est votre souvenir ?");
     },
     function (session, results) {
-        session.userData.coding = results.response;
+        session.userData.souvenir = results.response;
         builder.Prompts.choice(session, "Avec qui étiez vous ?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
-        session.userData.language = results.response.entity;
-        session.send("Got it... " + session.userData.name +
-                    " you've been programming for " + session.userData.coding +
+        session.userData.personne = results.response.entity;
+        session.send("Lieu " + session.userData.lieu +
+                    "Date du souvenir : " + session.userData.date +
+                    "Souvenir : " + session.userData.souvenir +
+                    "Accompagnateur " + session.userDate.language +
                     " years and use " + session.userData.language + ".");
     }
 ]);
