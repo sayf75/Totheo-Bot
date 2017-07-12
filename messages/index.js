@@ -23,17 +23,8 @@ bot.localePath(path.join(__dirname, './locale'));
 
 
 /*bot.dialog('/', [
-    function (session) {
-        builder.Prompts.text(session, "Quel est le lieu de votre souvenir ?");
-    },
-    function (session, results) {
-      session.userData.lieu = results.response;
-      builder.Prompts.time(session, "Ok " + results.response + " Entrez la date de votre souvenir (JJ/MM/AA HH:MM:SS) ?");
-    },
-    function (session, results) {
-        session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
-        builder.Prompts.text(session, "Quel est le type de souvenir ?");
-    },
+
+
     function (session, results) {
         session.userData.souvenir = results.response;
           builder.Prompts.text(session, "Ok, Avec qui étiez vous ?");
@@ -63,11 +54,15 @@ bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', [
     function (session) {
-        builder.Prompts.text(session, "Hello... What's your name?");
+        builder.Prompts.text(session, "Quel est le lieu de votre souvenir ?");
     },
     function (session, results) {
-        session.userData.name = results.response;
-        builder.Prompts.number(session, "Hi " + results.response + ", How many years have you been coding?");
+        session.userData.lieu = results.response;
+        builder.Prompts.time(session, "Ok " + results.response + " Entrez la date de votre souvenir (JJ/MM/AA HH:MM:SS) ?");
+    },
+    function (session, results) {
+        session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
+        builder.Prompts.text(session, "Quel est le type de souvenir ?");
     },
     function (session, results) {
         session.userData.coding = results.response;
@@ -75,8 +70,9 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.language = results.response.entity;
-        session.send("Got it... " + session.userData.name +
-                    " you've been programming for " + session.userData.coding +
+        session.send("Lieu : " + session.userData.lieu +
+                    " you've been programming for " + session.userData.date +
+                    "Type : " + session.userData.coding +
                     " years and use " + session.userData.language + ".");
     }
 ]);
