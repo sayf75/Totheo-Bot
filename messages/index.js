@@ -26,10 +26,12 @@ bot.dialog('/', [
     },
     function (session, results) {
       session.userData.where = results.response;
-      builder.Prompts.time(session, "De quand est ce souvenir ?" + results.response);
+      builder.Prompts.time(session, "De quand est ce souvenir ?");
     },
     function (session, results) {
-        session.userData.name = results.response;
+        if (results.response) {
+          session.userData.time = builder.EntityRecognizer.resolveTime([results.response]);
+        }
         builder.Prompts.number(session, " " + results.response + ", How many years have you been coding?");
     },
     function (session, results) {
