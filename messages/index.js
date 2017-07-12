@@ -26,7 +26,7 @@ bot.dialog('/', [
     },
     function (session, results) {
       session.userData.lieu = results.response;
-      builder.Prompts.time(session, "Ok " + results.response + " Quand cela s'est il passé (date et heure) ?")
+      builder.Prompts.time(session, "Ok " + results.response + " Entrez la date de votre souvenir (JJ/MM/AA HH:MM:SS) ?")
     },
     function (session, results) {
       if (results.reponse)
