@@ -46,7 +46,7 @@ bot.dialog('/', [
         builder.Prompts.text(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
-        session.userData.language = results.response.entity;
+        session.userData.language = results.response;
         session.send("Lieu : " + session.userData.lieu +
                     " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
