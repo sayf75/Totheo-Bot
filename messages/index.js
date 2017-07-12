@@ -25,23 +25,19 @@ bot.dialog('/', [
         builder.Prompts.text(session, "Bonjour où se trouve votre souvenir ?");
     },
     function (session, results) {
-      console.log(session.userData);
+      console.log(session.userData.name);
       session.userData.name = results.response;
-      builder.Prompts.time(session, "Entrez la date de votre souvenir ?" + results.reponse);
+      builder.Prompts.time(session, "Hi" + results.reponse + "Entrez la date de votre souvenir ?" );
     },
     function (session, results) {
-        session.userData.time = builder.EntityRecognizer.resolveTime([results.response]);
+        session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
         builder.Prompts.text(session, " " + results.response + ", Quel est votre souvenir ?");
     },
     function (session, results) {
         session.userData.coding = results.response;
-        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+        builder.Prompts.choice(session, "Avec qui étiez vous ?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
-      var options = {
-        maxRetries: 0,
-        };
-        builder.Prompts.choice(session, "Toutes les infos sont ok?", ["Yes", "No"], options);
         session.userData.language = results.response.entity;
         session.send("Got it... " + session.userData.name +
                     " you've been programming for " + session.userData.coding +
