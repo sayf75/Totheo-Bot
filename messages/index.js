@@ -49,9 +49,9 @@ bot.dialog('/', [
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
 //                    " Date : " + session.userData.date +
-                    " Type de Souvenir : " + session.userData.souvenir +
-                    " Personne : " + session.userDate.personne +
-                    " Tag : " + session.userDate.tag +
+//                    " Type de Souvenir : " + session.userData.souvenir +
+//                    " Personne : " + session.userDate.personne +
+//                    " Tag : " + session.userDate.tag +
                     " years and use " + session.userData.language + ".");
     }
 ]);
