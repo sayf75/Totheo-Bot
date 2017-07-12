@@ -45,6 +45,7 @@ bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', [
     function (session) {
+      session.send("Bonjour dans Souvenir");
         builder.Prompts.text(session, "Bonjour quel est le lieu?");
     },
     function (session, results) {
