@@ -27,7 +27,7 @@ bot.dialog('/', [
     function (session, results) {
       session.userData.where = results.response;
       builder.Prompts.time(session, "De quand est ce souvenir ?" + results.response);
-    }
+    },
     function (session, results) {
         session.userData.name = results.response;
         builder.Prompts.number(session, " " + results.response + ", How many years have you been coding?");
@@ -44,7 +44,7 @@ bot.dialog('/', [
         session.send("Got it... " + session.userData.name +
                     " you've been programming for " + session.userData.coding +
                     " years and use " + session.userData.language + ".");
-                    builder.Prompts.choice(session, "Is it ok?", ["Yes", "No"], options);
+        builder.Prompts.choice(session, "Is it ok?", ["Yes", "No"], options);
     }
 ]);
 
