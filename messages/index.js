@@ -20,27 +20,8 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
 var bot = new builder.UniversalBot(connector);
 bot.localePath(path.join(__dirname, './locale'));
 
-bot.dialog('/', [
-    function (session) {
-        builder.Prompts.text(session, "Hello... What's your name?");
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        builder.Prompts.number(session, "Hi " + results.response + ", How many years have you been coding?");
-    },
-    function (session, results) {
-        session.userData.coding = results.response;
-        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
-    },
-    function (session, results) {
-        session.userData.language = results.response.entity;
-        session.send("Got it... " + session.userData.name +
-                    " you've been programming for " + session.userData.coding +
-                    " years and use " + session.userData.language + ".");
-    }
-]);
 
-/*bot.dialog('/', [
+bot.dialog('/', [
     function (session) {
         builder.Prompts.text(session, "Bonjour quel est le lieu?");
     },
@@ -67,13 +48,14 @@ bot.dialog('/', [
     function (session, results) {
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
-                    " Date : " + session.userData.date +
+//                    " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
                     " Personne : " + session.userDate.personne +
                     " Tag : " + session.userDate.tag +
                     " years and use " + session.userData.language + ".");
     }
-]);*/
+]);
+
 if (useEmulator) {
     var restify = require('restify');
     var server = restify.createServer();
