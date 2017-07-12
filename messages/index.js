@@ -25,8 +25,8 @@ bot.dialog('/', [
         builder.Prompts.text(session, "Bonjour quel est le lieu de votre souvenir ?");
     },
     function (session, results) {
-      session.userData.lieu = results.response;
-      builder.Prompts.time(session, "Hi " + results.reponse + "Entrez la date de votre souvenir ?" );
+      session.userData.name = results.response;
+      builder.Prompts.time(session, "Hi " + results.reponse + " Entrez la date de votre souvenir ?" );
 
     },
     function (session, results) {
@@ -39,7 +39,7 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.personne = results.response.entity;
-        session.send("Lieu " + session.userData.lieu +
+        session.send("Lieu " + session.userData.name +
                     "Date du souvenir : " + session.userData.date +
                     "Souvenir : " + session.userData.souvenir +
                     "Accompagnateur " + session.userDate.language +
