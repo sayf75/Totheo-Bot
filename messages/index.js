@@ -47,6 +47,7 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.language = results.response.entity;
+        builder.Prompts.confirm(session, "Toutes les informations sont valides ?", { listStyle: 'none'});
         session.send("Lieu : " + session.userData.lieu +
 //                    " Date : " + session.userData.date +
 //                    " Type de Souvenir : " + session.userData.souvenir +
