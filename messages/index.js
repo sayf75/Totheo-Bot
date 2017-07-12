@@ -51,7 +51,7 @@ bot.dialog('/', [
 //                    " Date : " + session.userData.date +
 //                    " Type de Souvenir : " + session.userData.souvenir +
 //                    " Personne : " + session.userDate.personne +
-//                    " Tag : " + session.userDate.tag +
+                    " Tag : " + session.userDate.tag +
                     " years and use " + session.userData.language + ".");
     }
 ]);
