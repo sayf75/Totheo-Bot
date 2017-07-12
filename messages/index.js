@@ -17,15 +17,18 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
     openIdMetadata: process.env['BotOpenIdMetadata']
 });
 
-var bot = new builder.UniversalBot(connector);
+var bot = new builder.UniversalBot(connector [
+    function (session)  {
+      session.send("Bienvenue dans Souvenir !");
+    }
+]);
 
 bot.localePath(path.join(__dirname, './locale'));
 
 
 bot.dialog('/', [
     function (session) {
-      session.send("Bonjour dans Souvenir");
-        builder.Prompts.text(session, "Bonjour quel est le lieu?");
+        builder.Prompts.text(session, "Quel est le lieu de votre souvenir ?");
     },
     function (session, results) {
       session.userData.lieu = results.response;
@@ -37,7 +40,7 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.souvenir = results.response;
-          builder.Prompts.text(session, "Ok " + results.response + ", Avec qui étiez vous ?");
+          builder.Prompts.text(session, "Ok, Avec qui étiez vous ?");
     },
     function (session, results) {
         session.userData.personne = results.response;
@@ -56,7 +59,7 @@ bot.dialog('/', [
         session.send("Lieu : " + session.userData.lieu + "\n" +
 //                    " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
-                    " Personne : " + session.userDate.personne +
+//                    " Personne : " + session.userDate.personne +
                     " Tag: " + session.userDate.tag +
                     " years and use " + session.userData.language + ".");
     }
