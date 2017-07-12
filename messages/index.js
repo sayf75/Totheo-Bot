@@ -32,7 +32,7 @@ bot.dialog('/', [
     },
     function (session, results) {
       session.userData.lieu = results.response;
-      builder.Prompts.time(session, "Ok " + results.response + " Entrez la date de votre souvenir (JJ/MM/AA HH:MM:SS) ?")
+      builder.Prompts.time(session, "Ok " + results.response + " Entrez la date de votre souvenir (JJ/MM/AA HH:MM:SS) ?");
     },
     function (session, results) {
         session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
