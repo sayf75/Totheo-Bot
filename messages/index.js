@@ -46,13 +46,13 @@ bot.dialog('/', [
         builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
+      builder.Prompts.confirm(session, "Toutes les informations sont valides ?");
         session.userData.language = results.response.entity;
-        builder.Prompts.confirm(session, "Toutes les informations sont valides ?", { listStyle: 'none'});
         session.send("Lieu : " + session.userData.lieu + "\n" +
 //                    " Date : " + session.userData.date +
-//                    " Type de Souvenir : " + session.userData.souvenir +
+                    " Type de Souvenir : " + session.userData.souvenir +
 //                    " Personne : " + session.userDate.personne +
-                    " Tag : " + session.userDate.tag +
+//                    " Tag : " + session.userDate.tag +
                     " years and use " + session.userData.language + ".");
     }
 ]);
