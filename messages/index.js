@@ -22,10 +22,10 @@ bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', [
     function (session) {
-        builder.Prompts.text(session, "Hello... What's your name?");
+        builder.Prompts.text(session, "Hello... What's your lieu?");
     },
     function (session, results) {
-        session.userData.name = results.response;
+        session.userData.lieu = results.response;
         builder.Prompts.number(session, "Hi " + results.response + ", How many years have you been coding?");
     },
     function (session, results) {
