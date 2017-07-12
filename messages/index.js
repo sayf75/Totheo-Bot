@@ -38,7 +38,8 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.language = results.response.entity;
-        session.send("Got it... " + session.userData.name +
+        session.send("Lieu : " + session.userData.lieu +
+                    " Date : " + session.userData.date +
                     " you've been programming for " + session.userData.coding +
                     " years and use " + session.userData.language + ".");
     }
