@@ -43,17 +43,21 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.tag = results.response;
-        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+        builder.Prompts.attachment(session, "Upload a picture for me to transform.");
     },
     function (session, results) {
+      session.userData.picture = results.response.entity;
       builder.Prompts.confirm(session, "Toutes les informations sont valides ?");
-        session.userData.language = results.response.entity;
+    },
+    function (session, results) {
+      session.userData.confirm = results.response;
         session.send("Lieu : " + session.userData.lieu + "\n" +
 //                    " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
 //                    " Personne : " + session.userDate.personne +
-                    " Tag : " + session.userDate.tag +
-                    " years and use " + session.userData.language + ".");
+                    " Tag: " + session.userDate.tag +
+                    " years and use " + session.userData.language +
+                    "Picture:" + session.userData.picture + ".");
     }
 ]);
 
