@@ -63,14 +63,14 @@ bot.dialog('/', [
         builder.Prompts.attachment(session, "Upload a picture for me to transform.");
     },
     function (session, results) {
-      session.userData.picture = results.response.entity;
+      session.userData.picture = results.response;
       builder.Prompts.confirm(session, "Toutes les informations sont valides ?");
     },
     function (session, results) {
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
-                    " you've been programming for " + session.userData.date +
-                    "Type : " + session.userData.coding +
+                    " Date : " + session.userData.date +
+                    "Type : " + session.userData.souvenir +
                     " years and use " + session.userData.picture + ".");
     }
 ]);
