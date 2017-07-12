@@ -25,22 +25,7 @@ bot.localePath(path.join(__dirname, './locale'));
 /*bot.dialog('/', [
 
 
-    function (session, results) {
-        session.userData.souvenir = results.response;
-          builder.Prompts.text(session, "Ok, Avec qui étiez vous ?");
-    },
-    function (session, results) {
-        session.userData.personne = results.response;
-        builder.Prompts.text(session, "Veuillez entrer des #tags pour votre souvenir ?");
-    },
-    function (session, results) {
-        session.userData.tag = results.response;
-        builder.Prompts.attachment(session, "Upload a picture for me to transform.");
-    },
-    function (session, results) {
-      session.userData.picture = results.response.entity;
-      builder.Prompts.confirm(session, "Toutes les informations sont valides ?");
-    },
+
     function (session, results) {
       session.userData.confirm = results.response;
         session.send("Lieu : " + session.userData.lieu + "\n" +
@@ -66,15 +51,27 @@ bot.dialog('/', [
         builder.Prompts.text(session, "Quel est le type de souvenir ?");
     },
     function (session, results) {
-        session.userData.coding = results.response;
-        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+        session.userData.souvenir = results.response;
+          builder.Prompts.text(session, "Ok, Avec qui étiez vous ?");
+    },
+    function (session, results) {
+        session.userData.personne = results.response;
+        builder.Prompts.text(session, "Veuillez entrer des #tags pour votre souvenir ?");
+    },
+    function (session, results) {
+        session.userData.tag = results.response;
+        builder.Prompts.attachment(session, "Upload a picture for me to transform.");
+    },
+    function (session, results) {
+      session.userData.picture = results.response.entity;
+      builder.Prompts.confirm(session, "Toutes les informations sont valides ?");
     },
     function (session, results) {
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
                     " you've been programming for " + session.userData.date +
                     "Type : " + session.userData.coding +
-                    " years and use " + session.userData.language + ".");
+                    " years and use " + session.userData.picture + ".");
     }
 ]);
 
