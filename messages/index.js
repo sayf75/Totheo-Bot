@@ -29,9 +29,7 @@ bot.dialog('/', [
       builder.Prompts.time(session, "De quand est ce souvenir ?");
     },
     function (session, results) {
-        if (results.response) {
-          session.userData.time = builder.EntityRecognizer.resolveTime([results.response]);
-        }
+        session.userData.time = builder.EntityRecognizer.resolveTime([results.response]);
         builder.Prompts.number(session, " " + results.response + ", How many years have you been coding?");
     },
     function (session, results) {
