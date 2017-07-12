@@ -22,12 +22,31 @@ bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', [
     function (session) {
+        builder.Prompts.text(session, "Hello... What's your name?");
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        builder.Prompts.number(session, "Hi " + results.response + ", How many years have you been coding?");
+    },
+    function (session, results) {
+        session.userData.coding = results.response;
+        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+    },
+    function (session, results) {
+        session.userData.language = results.response.entity;
+        session.send("Got it... " + session.userData.name +
+                    " you've been programming for " + session.userData.coding +
+                    " years and use " + session.userData.language + ".");
+    }
+]);
+/*bot.dialog('/', [
+
+    function (session) {
         builder.Prompts.text(session, "Bonjour quel est le lieu de votre souvenir ?");
     },
     function (session, results) {
       session.userData.name = results.response;
-      builder.Prompts.time(session, "Hi " + results.reponse + " Entrez la date de votre souvenir ?" );
-
+      builder.Prompts.time(session, results.reponse + " Entrez la date de votre souvenir ?" );
     },
     function (session, results) {
         session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
@@ -45,7 +64,7 @@ bot.dialog('/', [
                     "Accompagnateur " + session.userDate.language +
                     " years and use " + session.userData.language + ".");
     }
-]);
+]);*/
 
 if (useEmulator) {
     var restify = require('restify');
