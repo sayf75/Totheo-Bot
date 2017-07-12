@@ -60,7 +60,7 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.tag = results.response;
-        builder.Prompts.attachment(session, "Upload a picture for me to transform.");
+        builder.Prompts.attachment(session, "Ajouter une image pour votre souvenir");
     },
     function (session, results) {
       session.userData.picture = results.response;
