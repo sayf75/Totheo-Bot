@@ -26,7 +26,7 @@ bot.dialog('/', [
     },
     function (session, results) {
       session.userData.lieu = results.response;
-      builder.Prompts.date(session, "Ok " + results.response + "Quand cela s'est il passé ?")
+      builder.Prompts.time(session, "Ok " + results.response + "Quand cela s'est il passé ?")
     },
     function (session, results) {
       session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
@@ -54,6 +54,7 @@ bot.dialog('/', [
       builder.Prompts.time(session, results.reponse + " Entrez la date de votre souvenir ?" );
     },
     function (session, results) {
+        session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
         builder.Prompts.text(session, " " + results.response + ", Quel est votre souvenir ?");
     },
     function (session, results) {
