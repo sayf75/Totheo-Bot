@@ -29,48 +29,27 @@ bot.dialog('/', [
       builder.Prompts.time(session, "Ok " + results.response + "Quand cela s'est il passé ?")
     },
     function (session, results) {
-      session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
-      builder.Prompts.text(session, "Ok " + results.response + ", Avec qui étiez vous ?");
+      if (results.reponse)
+        session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
+        builder.Prompts.text(session, "Quel est le type de souvenir ?");
     },
     function (session, results) {
-        session.userData.coding = results.response;
+        session.userData.souvenir = results.response;
+          builder.Prompts.text(session, "Ok " + results.response + ", Avec qui étiez vous ?");
+    },
+    function (session, results) {
+        session.userData.personne = results.response;
         builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
                     " Date : " + session.userData.date +
-                    " Personne : " + session.userDate.coding +
+                    " Type de Souvenir : " + session.userData.souvenir +
+                    " Personne : " + session.userDate.personne +
                     " years and use " + session.userData.language + ".");
     }
 ]);
-/*bot.dialog('/', [
-
-    function (session) {
-        builder.Prompts.text(session, "Bonjour quel est le lieu de votre souvenir ?");
-    },
-    function (session, results) {
-      session.userData.name = results.response;
-      builder.Prompts.time(session, results.reponse + " Entrez la date de votre souvenir ?" );
-    },
-    function (session, results) {
-        session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
-        builder.Prompts.text(session, " " + results.response + ", Quel est votre souvenir ?");
-    },
-    function (session, results) {
-        session.userData.souvenir = results.response;
-        builder.Prompts.choice(session, "Avec qui étiez vous ?", ["JavaScript", "CoffeeScript", "TypeScript"]);
-    },
-    function (session, results) {
-        session.userData.personne = results.response.entity;
-        session.send("Lieu " + session.userData.name +
-                    "Date du souvenir : " + session.userData.date +
-                    "Souvenir : " + session.userData.souvenir +
-                    "Accompagnateur " + session.userDate.language +
-                    " years and use " + session.userData.language + ".");
-    }
-]);*/
-
 if (useEmulator) {
     var restify = require('restify');
     var server = restify.createServer();
