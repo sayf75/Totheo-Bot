@@ -25,8 +25,9 @@ bot.dialog('/', [
         builder.Prompts.text(session, "Bonjour où se trouve votre souvenir ?");
     },
     function (session, results) {
-      session.userData.where = results.response;
-      builder.Prompts.time(session, "De quand est ce souvenir ?" + results.reponse);
+      console.log(session.userData);
+      session.userData.name = results.response;
+      builder.Prompts.time(session, "Entrez la date de votre souvenir ?" + results.reponse);
     },
     function (session, results) {
         session.userData.time = builder.EntityRecognizer.resolveTime([results.response]);
