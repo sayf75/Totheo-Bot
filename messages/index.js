@@ -26,7 +26,7 @@ bot.dialog('/', [
     },
     function (session, results) {
       session.userData.lieu = results.response;
-      builder.Prompts.time(session, "Ok " + results.response + "Quand cela s'est il passé ?")
+      builder.Prompts.time(session, "Ok " + results.response + " Quand cela s'est il passé (date et heure) ?")
     },
     function (session, results) {
       if (results.reponse)
@@ -39,7 +39,11 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.personne = results.response;
-        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+        builder.Prompts.text(session, "Veuillez entrer des #tags pour votre souvenir ?");
+    },
+    function (session, results) {
+        session.userData.tag = results.response;
+        builder.Prompts.text(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
         session.userData.language = results.response.entity;
@@ -47,6 +51,7 @@ bot.dialog('/', [
                     " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
                     " Personne : " + session.userDate.personne +
+                    " Tag : " + session.userDate.tag +
                     " years and use " + session.userData.language + ".");
     }
 ]);
