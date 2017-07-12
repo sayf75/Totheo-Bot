@@ -29,7 +29,6 @@ bot.dialog('/', [
       builder.Prompts.time(session, "Ok " + results.response + " Entrez la date de votre souvenir (JJ/MM/AA HH:MM:SS) ?")
     },
     function (session, results) {
-      if (results.reponse)
         session.userData.date = builder.EntityRecognizer.resolveTime([results.response]);
         builder.Prompts.text(session, "Quel est le type de souvenir ?");
     },
@@ -43,10 +42,10 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.tag = results.response;
-        builder.Prompts.text(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
+        builder.Prompts.choice(session, "What language do you code Node using?", ["JavaScript", "CoffeeScript", "TypeScript"]);
     },
     function (session, results) {
-        session.userData.language = results.response;
+        session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
                     " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
