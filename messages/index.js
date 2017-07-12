@@ -26,11 +26,11 @@ bot.dialog('/', [
     },
     function (session, results) {
       session.userData.where = results.response;
-      builder.Prompts.time(session, "De quand est ce souvenir ?");
+      builder.Prompts.time(session, "De quand est ce souvenir ?" + results.reponse);
     },
     function (session, results) {
         session.userData.time = builder.EntityRecognizer.resolveTime([results.response]);
-        builder.Prompts.number(session, " " + results.response + ", How many years have you been coding?");
+        builder.Prompts.text(session, " " + results.response + ", Quel est votre souvenir ?");
     },
     function (session, results) {
         session.userData.coding = results.response;
@@ -40,11 +40,11 @@ bot.dialog('/', [
       var options = {
         maxRetries: 0,
         };
+        builder.Prompts.choice(session, "Toutes les infos sont ok?", ["Yes", "No"], options);
         session.userData.language = results.response.entity;
         session.send("Got it... " + session.userData.name +
                     " you've been programming for " + session.userData.coding +
                     " years and use " + session.userData.language + ".");
-        builder.Prompts.choice(session, "Is it ok?", ["Yes", "No"], options);
     }
 ]);
 
