@@ -24,15 +24,13 @@ bot.dialog('/', [
     function (session) {
         builder.Prompts.text(session, "Bonjour quel est le lieu?");
     },
-    /*function (session, results) {
+    function (session, results) {
       session.userData.lieu = results.response;
       builder.Prompts.date(session, "Ok " + results.response + "Quand cela s'est il passé ?")
-    },*/
+    },
     function (session, results) {
-      console.log("Here");
-      console.log(session.userData);
-        session.userData.lieu = results.response;
-        builder.Prompts.number(session, "Ok " + results.response + ", How many years have you been coding?");
+        session.userData.date = results.response;
+        builder.Prompts.text(session, "Ok " + results.response + ", Avec qui étiez vous ?");
     },
     function (session, results) {
         session.userData.coding = results.response;
@@ -42,7 +40,7 @@ bot.dialog('/', [
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
                     " Date : " + session.userData.date +
-                    " you've been programming for " + session.userData.coding +
+                    " Personne : " + session.userDate.coding +
                     " years and use " + session.userData.language + ".");
     }
 ]);
