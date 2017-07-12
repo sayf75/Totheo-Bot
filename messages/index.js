@@ -45,6 +45,7 @@ bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', [
     function (session) {
+        session.send("Bonjour");
         builder.Prompts.text(session, "Bonjour quel est le lieu?");
     },
     function (session, results) {
@@ -76,10 +77,10 @@ bot.dialog('/', [
         session.send("Lieu : " + session.userData.lieu + "\n" +
 //                    " Date : " + session.userData.date +
                     " Type de Souvenir : " + session.userData.souvenir +
-//                    " Personne : " + session.userDate.personne +
+                    " Personne : " + session.userDate.personne +
                     " Tag: " + session.userDate.tag +
                     " years and use " + session.userData.language +
-                    "Picture:" + session.userData.picture + ".");
+                    //"Picture:" + session.userData.picture + ".");
     }
 ]);
 
