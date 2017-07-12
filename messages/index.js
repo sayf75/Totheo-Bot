@@ -59,9 +59,10 @@ bot.dialog('/', [
                     " Personne : " + session.userDate.personne +
                     " Tag: " + session.userDate.tag +
                     " years and use " + session.userData.language +
-                    //"Picture:" + session.userData.picture + ".");
+                    //"Picture:" + session.userData.picture + "."
+                  );
     }
-]);
+  ]);
 
 if (useEmulator) {
     var restify = require('restify');
