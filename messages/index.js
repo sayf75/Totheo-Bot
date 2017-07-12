@@ -24,12 +24,14 @@ bot.dialog('/', [
     function (session) {
         builder.Prompts.text(session, "Bonjour quel est le lieu?");
     },
-    function (session, results) {
+    /*function (session, results) {
       session.userData.lieu = results.response;
       builder.Prompts.date(session, "Ok " + results.response + "Quand cela s'est il passé ?")
-    },
+    },*/
     function (session, results) {
-        session.userData.date = results.response;
+      console.log("Here");
+      console.log(session.userData);
+        session.userData.lieu = results.response;
         builder.Prompts.number(session, "Ok " + results.response + ", How many years have you been coding?");
     },
     function (session, results) {
