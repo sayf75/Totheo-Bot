@@ -70,7 +70,7 @@ bot.dialog('/', [
         session.userData.language = results.response.entity;
         session.send("Lieu : " + session.userData.lieu +
                     " Date : " + session.userData.date +
-                    "Type : " + session.userData.souvenir +
+                    " Type : " + session.userData.souvenir +
                     " years and use " + session.userData.picture + ".");
     }
 ]);
