@@ -21,22 +21,6 @@ var bot = new builder.UniversalBot(connector);
 
 bot.localePath(path.join(__dirname, './locale'));
 
-
-/*bot.dialog('/', [
-
-
-
-    function (session, results) {
-      session.userData.confirm = results.response;
-        session.send("Lieu : " + session.userData.lieu + "\n" +
-//                    " Date : " + session.userData.date +
-                    " Type de Souvenir : " + session.userData.souvenir +
-//                    " Personne : " + session.userDate.personne +
-                    " Tag: " + session.userDate.tag +
-                    " years and use " + session.userData.language + ".");
-    }
-]);*/
-
 bot.dialog('/', [
     function (session) {
         session.send("Bienvenue dans souvenir.")
