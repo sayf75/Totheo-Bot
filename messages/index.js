@@ -63,14 +63,6 @@ bot.dialog('/', [
         builder.Prompts.attachment(session, "Ajouter une image pour votre souvenir");
     },
     function (session, results) {
-        var firstAttachment = results.response[0],
-            msg = new builder.Message(session)
-                .text("You sent a file of type %s and named %s",
-                      firstAttachment.contentType, firstAttachment.name);
-        msg.addAttachment(attachment);
-        session.endDialog(msg);
-    },
-    function (session, results) {
       session.userData.picture = results.response;
       builder.Prompts.confirm(session, "Toutes les informations sont valides ?");
     },
